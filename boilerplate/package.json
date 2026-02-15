@@ -1,0 +1,65 @@
+{
+  "name": "@ralphdp/logos-boilerplate-nextjs",
+  "version": "6.0.0",
+  "description": "Logos Kernel Boilerplate — V6.0 (Generative). High-fidelity Next.js + Vanilla CSS + Prisma + Three.js template.",
+  "keywords": [
+    "logos",
+    "nextjs",
+    "boilerplate",
+    "structural-reasoning",
+    "threejs",
+    "prisma",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralphdp/Logos-Kernel.git"
+  },
+  "homepage": "https://logos.pub",
+  "bugs": {
+    "url": "https://github.com/ralphdp/Logos-Kernel/issues"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.0.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "three": "^0.182.0",
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/drei": "^10.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.182.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.1.6",
+    "prisma": "^6.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "src",
+    "prisma",
+    "package.json",
+    "next.config.mjs",
+    "next-env.d.ts",
+    "tsconfig.json",
+    "README.md",
+    "license.md",
+    ".env.example"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

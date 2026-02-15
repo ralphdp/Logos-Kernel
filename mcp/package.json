@@ -1,0 +1,54 @@
+{
+  "name": "@ralphdp/logos-mcp-server",
+  "version": "6.0.1",
+  "description": "An MCP server for high-resolution structural reasoning under the Logos Protocol (V6.0 — Public Layer 4/8).",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "logos-mcp-server": "build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE",
+    "definitions.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralphdp/Logos-Kernel.git"
+  },
+  "homepage": "https://github.com/ralphdp/Logos-Kernel#readme",
+  "bugs": {
+    "url": "https://github.com/ralphdp/Logos-Kernel/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "logos",
+    "cursor",
+    "claude",
+    "antigravity",
+    "structural-reasoning"
+  ],
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

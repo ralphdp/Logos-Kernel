@@ -1,0 +1,32 @@
+---
+description: Always consider and bump package version when changing mcp/ or boilerplate/ or before npm publish
+alwaysApply: true
+---
+
+# Version bump — always consider when changing publishable packages
+
+**Rule:** When making **any** change to a publishable package (`mcp/`, `boilerplate/`), **consider the version**. Before suggesting or running `npm publish`, **always** ensure the version in `package.json` has been **incremented** from whatever is currently on npm (you cannot republish the same version).
+
+## When to bump
+
+- **Before every npm publish:** Check that the version in `package.json` is **new** (not already published). If in doubt or if the user hit "cannot publish over previously published versions", bump to the next patch (or minor/major as appropriate).
+- When changing **mcp/** in a way that could be released: bump `mcp/package.json` `version`.
+- When changing **boilerplate/** in a way that could be released: bump `boilerplate/package.json` `version` if you version that package.
+- Prefer bumping **as part of the same change** that touches the package (e.g. edit + version bump together), so the user never tries to publish an already-published version.
+
+## How to bump
+
+- **Patch** (e.g. 1.0.8 → 1.0.9): small fixes, docs, config, no API change.
+- **Minor** (e.g. 1.0.9 → 1.1.0): new features, backward compatible.
+- **Major** (e.g. 1.1.0 → 2.0.0): breaking changes.
+
+**npm does not allow republishing.** If publish fails with "You cannot publish over the previously published versions: X.Y.Z", bump to the next patch (or minor/major as appropriate) and try again.
+
+## Checklist
+
+When you change code or docs in `mcp/` or `boilerplate/`:
+
+1. If the change could be part of a release: **update the `version`** in that package’s `package.json` (patch/minor/major as above).
+2. When the user is about to run or has run `npm publish`: if they get 403 "cannot publish over previously published versions", **bump the version** in that package’s `package.json` and tell them to run `npm publish` again.
+3. Mention the version bump in the commit message (e.g. "mcp: bump to 1.0.9").
+4. For npm: run `npm run build` then `npm publish` from that package directory.

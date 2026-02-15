@@ -1,0 +1,9 @@
+{
+  "name": "logos-kernel-root",
+  "private": true,
+  "description": "Logos Kernel — spec, MCP, boilerplate. Build and publish MCP from ./mcp.",
+  "scripts": {
+    "build": "cd mcp && npm run build",
+    "publish:mcp": "cd mcp && npm run build && npm publish"
+  }
+}

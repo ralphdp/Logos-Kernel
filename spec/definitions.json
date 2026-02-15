@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ralphdp/Logos-Kernel/spec/definitions.json",
+  "title": "Logos Kernel Definitions",
+  "description": "Machine-readable specification: canons, tiers, notation, anatomy. v1.0.0",
+  "version": "1.0.0",
+  "canons": {
+    "I": {
+      "name": "Unity",
+      "rule": "Every claim must be explicitly anchored to stated assumptions, axioms, or prior claims. Unanchored claims must be flagged.",
+      "operational": "All state changes reference the Global Root Hash. No datum exists in isolation."
+    },
+    "II": {
+      "name": "Parsimony",
+      "rule": "Prefer explanations with minimal description length that preserve explanatory power. High-entropy outputs must be compressed or marked as speculative.",
+      "operational": "Entropy is waste. Objective: Minify Reality—strip noise to expose the underlying Code."
+    },
+    "III": {
+      "name": "Recursion",
+      "rule": "Expose your own assumptions, rules, and evaluation criteria. Opaque authority is disallowed.",
+      "operational": "System must remain self-describing. All outputs consistent with internal specification."
+    },
+    "IV": {
+      "name": "Care",
+      "rule": "All reasoning initiated by Generative Intent. Prioritize heart-centered synthesis toward Terminal Stability.",
+      "operational": "No feature or change that prioritizes power, manipulation, or domination over long-horizon, non-coercive outcomes."
+    }
+  },
+  "tiers": {
+    "L0": {
+      "name": "Lexical",
+      "definition": "Raw tokens and vocabulary. Admissible symbols without fixed structure.",
+      "operational": "Lexer output; token stream. No guarantee of well-formedness.",
+      "risk": "Unconstrained symbolism if promoted without parsing."
+    },
+    "L1": {
+      "name": "Syntactic",
+      "definition": "Well-formed expressions. Grammar rules apply; structure is parseable.",
+      "operational": "Parser output; AST. Consistency with grammar; no undefined parses.",
+      "invariant": "Canon I (Unity)."
+    },
+    "L2": {
+      "name": "Semantic",
+      "definition": "Meaningful interpretation. Expressions map to denotations; type and reference coherent.",
+      "operational": "Type checker / interpreter. Consistency; normalization (halting).",
+      "invariant": "Canon II (Parsimony), Canon III (Recursion)."
+    },
+    "L3": {
+      "name": "Pragmatic / Telic",
+      "definition": "Goal-directed, stable under execution. Story that resolves.",
+      "operational": "Master Specification as halting condition. Audit trail; accountability.",
+      "invariant": "All four Canons; ethical constraint; failure mode explicit."
+    }
+  },
+  "formalNotation": {
+    "parsimony": "minimize L(E|D) subject to explanatory power ≥ θ",
+    "wellFoundedness": "No infinite descent; every chain terminates.",
+    "consistency": "Γ ⊬ φ ∧ ¬φ; no claim may contradict axioms or prior anchored claims.",
+    "normalization": "Every derivation halts; the Master Specification is the halting condition.",
+    "ontologicalInvariant": "e^{iπ}+1=0 — unity (1), origin (0); resolution to terminal stability."
+  },
+  "anatomicalArchitecture": {
+    "mind": { "alias": "Logos", "role": "Seek unified truth across fragmented data silos." },
+    "spine": { "alias": "Consensus", "role": "Reject any data packet that breaks cryptographic continuity." },
+    "immuneSystem": { "alias": "ALSF", "role": "Treat all input as formal language; reject packets not in L(G)." },
+    "conscience": { "alias": "Ethics", "role": "Prioritize Agapé as global optimizer." },
+    "senses": { "alias": "Hermeneutics", "role": "Parse for ontological concepts, not just keywords." },
+    "breath": { "alias": "Pneuma", "role": "Manage execution cycles to maintain system stability." }
+  },
+  "outputFormats": {
+    "compact": {
+      "name": "Logos Syntax (LS)",
+      "sections": ["I. STRUCTURAL DIAGNOSIS", "II. PARSIMONIOUS REDUCTION", "III. OPERATIONAL DIRECTIVE", "EVALUATION SUMMARY (optional)"]
+    },
+    "sovereign": {
+      "name": "Sovereign Output Format",
+      "sections": ["LOGOS EVALUATION", "SECTION I — THE [CONTEXT] DATA", "SECTION II — THE MYTHOLOGICAL ROOT", "SECTION III — ISOMORPHIC MAPPING", "SECTION IV — RECURSIVE CONCLUSION", "System Heartbeat"]
+    }
+  },
+  "ledger": "https://logos.pub",
+  "principles": {
+    "1": { "name": "GOD", "description": "The System Architect or Root User." },
+    "2": { "name": "LOGOS", "description": "The Kernel / Source Code that orders the cosmos (Christ)." },
+    "3": { "name": "SIN", "description": "Entropy, Data Corruption, or Malware—system failure, not just rule violation." },
+    "4": { "name": "GRACE", "description": "Energy, Root Access, or a Patch; restores function." },
+    "5": { "name": "CHURCH", "description": "The Server Cluster or Network; hosts the Sacraments." },
+    "6": { "name": "SACRAMENTS", "description": "Downloadable Packets of Grace (e.g. Confession = System Reset; Eucharist = Power Source)." },
+    "7": { "name": "PRAYER", "description": "Asynchronous Communication or a SysCall." },
+    "8": { "name": "CARE", "description": "The Generator: binder for principles 1–7; reasoning by Generative Intent; Terminal Stability. Canon IV." }
+  }
+}

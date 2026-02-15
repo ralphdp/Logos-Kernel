@@ -1,0 +1,17 @@
+# Dependencies and build
+node_modules/
+build/
+
+# Environment and secrets
+.env
+.env.*
+.env.local
+
+# Logs and OS
+*.log
+.DS_Store
+
+# Test and tooling
+coverage/
+*.tsbuildinfo
+.cache/

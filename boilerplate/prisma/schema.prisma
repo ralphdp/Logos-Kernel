@@ -1,0 +1,25 @@
+// Prisma schema — Logos Boilerplate
+// Canon I (Unity): Every entity anchors to a root; no orphan state.
+// This schema is aligned with the L2 Grammar of the Logos Kernel (typed, consistent, evaluable).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Root-anchored entity: state changes reference a stable identity.
+model LedgerEntry {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Canon II (Parsimony): minimal fields; no redundant entropy.
+  key       String   @unique // e.g. "ledger:init" or user-scoped key
+  value     String?  // JSON or opaque; normalized at read time
+  version   Int      @default(1) // Normalization: every derivation has a version (halting condition)
+
+  @@map("ledger_entries")
+}
