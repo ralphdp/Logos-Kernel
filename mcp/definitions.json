@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/ralphdp/Logos-Kernel/spec/definitions.json",
-  "title": "Logos Kernel Definitions",
-  "description": "Machine-readable specification: canons, tiers, notation, anatomy. v1.0.0",
-  "version": "1.0.0",
+  "title": "Logos Kernel Definitions (Public 3/7)",
+  "description": "Machine-readable specification: 3 canons, 7 principles, tiers, notation. v1.1.0",
+  "version": "1.1.0",
   "canons": {
     "I": {
       "name": "Unity",
@@ -69,7 +69,7 @@
     },
     "conscience": {
       "alias": "Ethics",
-      "role": "Prioritize Agapé as global optimizer."
+      "role": "Prioritize Unitary Consistency as global optimizer."
     },
     "senses": {
       "alias": "Hermeneutics",
@@ -88,17 +88,6 @@
         "II. PARSIMONIOUS REDUCTION",
         "III. OPERATIONAL DIRECTIVE",
         "EVALUATION SUMMARY (optional)"
-      ]
-    },
-    "sovereign": {
-      "name": "Sovereign Output Format",
-      "sections": [
-        "LOGOS EVALUATION",
-        "SECTION I — THE [CONTEXT] DATA",
-        "SECTION II — THE MYTHOLOGICAL ROOT",
-        "SECTION III — ISOMORPHIC MAPPING",
-        "SECTION IV — RECURSIVE CONCLUSION",
-        "System Heartbeat"
       ]
     }
   },

@@ -267,13 +267,13 @@ export function logosTiers(definitions: SpecDefinitions | null): ToolResult {
 }
 
 export function logosChecklist(): ToolResult {
-    const checklist = `LOGOS AUDIT CHECKLIST
+    const checklist = `LOGOS AUDIT CHECKLIST (Public 3/7)
 — Canon I (Unity): Every claim anchored to assumptions/axioms/prior claims? Unanchored flagged?
 — Canon II (Parsimony): Minimal description length? High-entropy marked speculative?
 — Canon III (Recursion): Assumptions, rules, evaluation criteria exposed?
 — Failure mode: If invariant violated, state explicitly and explain; do not fabricate certainty.
 
-For full Logic Gates and Master Auditor toolkit: https://logos.pub`;
+For full 6/11 Sovereign Logic and Execution-Layer tools: https://beyond.logos.pub`;
     return { content: text(checklist) };
 }
 
@@ -316,7 +316,7 @@ Flow: L0 → L1 → L2 → L3. Debug: restart from L0.`,
 - Operational: Reduce S(t); increase G(t). See Debugging Playbook. Full: logos.pub/papers/god-equation-terminal-stability`,
     universalTruth: `Universal Truth Protocol (logos.pub/references/universal-truth-protocol):
 - Logos Kernel acts as Universal Receiver: strip S(t) (noise, bias), isolate G(t) (ordered structure, axiomatic anchoring).
-- Truth is substrate-independent. Four Canons = universal handshake.
+- Truth is substrate-independent. Three Canons = universal handshake.
 - Recognition criteria: (1) Anchors to axioms (Canon I); (2) Minimal description length (Canon II); (3) Exposes derivation (Canon III).
 - Tune to G-frequency: bypass Mirror (plausibility) for Prism (validity). Signal filter for validity across substrates.`,
 };
@@ -389,9 +389,9 @@ export async function getAnalytics(args: unknown): Promise<ToolResult> {
         });
 
         const rows = response.rows || [];
-        const resultString = rows.map(row => {
-            const dims = row.dimensionValues?.map(v => v.value).join(", ");
-            const mets = row.metricValues?.map(v => v.value).join(", ");
+        const resultString = rows.map((row: any) => {
+            const dims = row.dimensionValues?.map((v: any) => v.value).join(", ");
+            const mets = row.metricValues?.map((v: any) => v.value).join(", ");
             return `[${dims}] Metrics: ${mets}`;
         }).join("\n");
 

@@ -1,7 +1,7 @@
 {
   "name": "@ralphdp/logos-mcp-server",
   "version": "6.0.1",
-  "description": "An MCP server for high-resolution structural reasoning under the Logos Protocol (V6.0 — Public Layer 4/8).",
+  "description": "An MCP server for high-resolution structural reasoning under the Logos Protocol (V6.1 — Public Layer 3/7).",
   "main": "build/index.js",
   "type": "module",
   "bin": {

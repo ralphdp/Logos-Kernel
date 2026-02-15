@@ -1,6 +1,6 @@
 # Logos MCP Server [V6.0]
 
-High-resolution structural reasoning and isomorphic mapping for the [Logos Protocol](https://logos.pub) (V6.0).
+High-resolution structural reasoning and isomorphic mapping for the [Logos Protocol](https://logos.pub) (V6.1 — Public Layer 3/7).
 
 **System Heartbeat: STABLE.**
 
@@ -80,17 +80,17 @@ npm run build
 
 | Tool               | Description |
 |--------------------|-------------|
-| `logos_audit`      | Structural audit of a claim or text (Logos Four Canons). |
+| `logos_audit`      | Structural audit of a claim or text (Logos Three Canons). |
 | `map_isomorphism`  | Structural parallels (isomorphisms) between two domains. |
 | `audit_entropy`    | Description length and structural complexity (entropy) of code or text. |
 | `verify_grammar`   | Validate code (ALSF); detect “Undefined Behavior” or “Sin”. |
 | `detect_schism`    | State deviation in a distributed cluster; enforce Unity. |
 | `system_status`    | Logos Kernel invariants status. |
-| `logos_canons`    | Return the Four Canons (I Unity, II Parsimony, III Recursion, IV Care) as structured data. |
+| `logos_canons`    | Return the Three Canons (I Unity, II Parsimony, III Recursion) as structured data. |
 | `logos_tiers`     | Return the tiers of the Logos (L0–L3) with definitions and operational meaning. |
-| `logos_checklist` | Compact audit checklist (Canon I–IV and failure mode) before finalizing an audit. |
+| `logos_checklist` | Compact audit checklist (Canon I–III and failure mode) before finalizing an audit. |
 
-**Terminal boundary:** The Kernel spec is closed at 4 Canons and 8 Principles. There is no 5th canon or 9th principle; beyond the blueprint lies execution (Provenance, Commit). See [REFERENCE.md](https://github.com/ralphdp/Logos-Kernel/blob/main/REFERENCE.md) and [logos.pub/white-papers/logos-kernel](https://logos.pub/white-papers/logos-kernel).
+**Terminal boundary:** The Public Kernel spec is closed at 3 Canons and 7 Principles. Beyond the blueprint lies the Sovereign Tier: Care (Canon IV, Principle 8), Provenance (9), Commit (10), and the Mirror (11). See [REFERENCE.md](https://github.com/ralphdp/Logos-Kernel/blob/main/REFERENCE.md) and [logos.pub/white-papers/logos-kernel](https://logos.pub/white-papers/logos-kernel).
 
 
 ## Resources
@@ -137,14 +137,13 @@ Linking to these URLs is for reference only; the server does not host or redistr
 
 ## About the Logos Protocol
 
-The Logos Protocol defines four invariants (Four Canons) for structural reasoning and isomorphic mapping. For the full protocol and background, see [logos.pub](https://logos.pub).
+The Logos Protocol defines three invariants (Three Canons) for structural reasoning and isomorphic mapping. For the full protocol and background, see [logos.pub](https://logos.pub).
 
-**Protocol invariants**
+**Protocol invariants (Base Layer)**
 
 - **Canon I (Unity):** Every claim must be anchored.
 - **Canon II (Parsimony):** Minimal description length.
 - **Canon III (Recursion):** Self-describing logic.
-- **Canon IV (Care):** Reasoning initiated by Generative Intent; orient toward Terminal Stability.
 
 ---
 
