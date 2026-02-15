@@ -411,7 +411,7 @@ class LogosServer {
                 {
                     name: "logos_canons",
                     description:
-                        "Return the Four Canons (I Unity, II Parsimony, III Recursion, IV Care) as structured data. Use to anchor reasoning or display invariant rules.",
+                        "Return the Three Canons (I Unity, II Parsimony, III Recursion) as structured data. Use to anchor reasoning or display invariant rules.",
                     inputSchema: { type: "object", properties: {} },
                 },
                 {
@@ -423,7 +423,7 @@ class LogosServer {
                 {
                     name: "logos_checklist",
                     description:
-                        "Return a compact audit checklist: Canon I (Unity), Canon II (Parsimony), Canon III (Recursion), Canon IV (Care), and failure mode. Use before finalizing an audit.",
+                        "Return a compact audit checklist: Canon I (Unity), Canon II (Parsimony), Canon III (Recursion), and failure mode. Use before finalizing an audit.",
                     inputSchema: { type: "object", properties: {} },
                 },
                 {

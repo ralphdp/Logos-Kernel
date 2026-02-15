@@ -271,7 +271,6 @@ export function logosChecklist(): ToolResult {
 — Canon I (Unity): Every claim anchored to assumptions/axioms/prior claims? Unanchored flagged?
 — Canon II (Parsimony): Minimal description length? High-entropy marked speculative?
 — Canon III (Recursion): Assumptions, rules, evaluation criteria exposed?
-— Canon IV (Care): Generative Intent, Terminal Stability? No power/manipulation over long-horizon outcomes?
 — Failure mode: If invariant violated, state explicitly and explain; do not fabricate certainty.
 
 For full Logic Gates and Master Auditor toolkit: https://logos.pub`;
@@ -318,7 +317,7 @@ Flow: L0 → L1 → L2 → L3. Debug: restart from L0.`,
     universalTruth: `Universal Truth Protocol (logos.pub/references/universal-truth-protocol):
 - Logos Kernel acts as Universal Receiver: strip S(t) (noise, bias), isolate G(t) (ordered structure, axiomatic anchoring).
 - Truth is substrate-independent. Four Canons = universal handshake.
-- Recognition criteria: (1) Anchors to axioms (Canon I); (2) Minimal description length (Canon II); (3) Exposes derivation (Canon III); (4) Reasoning by Generative Intent (Canon IV Care).
+- Recognition criteria: (1) Anchors to axioms (Canon I); (2) Minimal description length (Canon II); (3) Exposes derivation (Canon III).
 - Tune to G-frequency: bypass Mirror (plausibility) for Prism (validity). Signal filter for validity across substrates.`,
 };
 
