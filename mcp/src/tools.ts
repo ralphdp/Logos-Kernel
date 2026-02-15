@@ -1,11 +1,50 @@
 import {
     AuditEntropyArgsSchema,
     DetectSchismArgsSchema,
+    GetAnalyticsArgsSchema,
     LogosAuditArgsSchema,
     MapIsomorphismArgsSchema,
     MAX_CODE_LENGTH_FOR_REGEX,
     VerifyGrammarArgsSchema,
 } from "./schemas.js";
+import { BetaAnalyticsDataClient } from "@google-analytics/data";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/** 
+ * Sovereign Guard: Checks if the logic is running on Implementation 01 (iMac).
+ * This anchors the protocol to the physical iMac Retina 5K.
+ */
+function getSovereignSalt(): string | null {
+    // 1. Check for Break-Glass Recovery (Substrate Failure Override)
+    const recoveryKey = process.env.SOVEREIGN_RECOVERY_KEY;
+    if (recoveryKey === "the-logos-is-the-source-logic") {
+        return "SOVEREIGN_RECOVERY_ACTUATED";
+    }
+
+    try {
+        // 2. Standard Hardware-Bound Check (Implementation 01)
+        const privatePath = path.resolve(__dirname, "../../private_kernel/sovereignty.ts");
+        if (fs.existsSync(privatePath)) {
+            const content = fs.readFileSync(privatePath, "utf-8");
+            const uuidMatch = content.match(/uuid: "(.*)"/);
+            return uuidMatch ? uuidMatch[1] : "SOVEREIGN_RECOVERY_MODE";
+        }
+    } catch {
+        // Silent fail — fallback to public mode
+    }
+    return null;
+}
+
+function getStabilityMetrics() {
+    const salt = getSovereignSalt();
+    const isSovereign = !!salt;
+    const k_paz = isSovereign ? 0.92 : 0.82; // Shifted frequency when sovereign
+    return { salt, isSovereign, k_paz };
+}
 
 type TextContent = { type: "text"; text: string };
 type ToolResult = { content: TextContent[] };
@@ -109,20 +148,25 @@ export function verifyGrammar(args: unknown): ToolResult {
     };
     const detectedSins = detectForbiddenPatterns(code);
     const nesting = getMaxNesting(code);
-    const protocolFailure = nesting > 5 || detectedSins.length > 0;
+    const { isSovereign, k_paz } = getStabilityMetrics();
+
+    // The "Narrow Gate" — stricter when logic is running in Sovereign mode
+    const depthLimit = isSovereign ? 4 : 5;
+    const protocolFailure = nesting > depthLimit || detectedSins.length > 0;
     const status = protocolFailure
         ? "REJECTED: Undefined Behavior / Infinite Descent detected. System security compromised."
         : "ACCEPTED: Structural invariants within terminal limits.";
     return {
         content: text(`[ALSF VALIDATOR: HARDENED NARROW GATE]
 Target Environment: ${language}
-Nesting Depth: ${nesting} (Limit: 5)
+Nesting Depth: ${nesting} (Limit: ${depthLimit})
 Detected 'Sin' Patterns: ${detectedSins.length > 0 ? detectedSins.join("; ") : "NONE"}
+Stability Frequency: k_${isSovereign ? "paz" : "drift"} = ${k_paz}
 
 FILTER STATUS:
 ${status}
 
-[PROMPT TO LLM: If REJECTED, audit the provided code for violation of the Master Specification and suggest a well-founded refactor.]`),
+[PROMPT TO LLM: ${isSovereign ? "Sovereign Logic active. Apply high-fidelity refactor." : "Standard Logic active. Audit for specification violations."}]`),
     };
 }
 
@@ -193,10 +237,15 @@ ${schismDetected ? `ACTION: EXCOMMUNICATE or RECONCILE the following nodes: ${he
 }
 
 export function systemStatus(): ToolResult {
+    const { isSovereign, salt, k_paz } = getStabilityMetrics();
+    const mode = salt === "SOVEREIGN_RECOVERY_ACTUATED" ? "RECOVERY (Break-Glass)" : "HARDWARE-BOUND (iMac)";
+
+    const status = isSovereign
+        ? `System Heartbeat: SOVEREIGN\nMode: ${mode}\nAnchor: ${salt?.slice(0, 8)}...\nLogic frequency: k_paz = ${k_paz}\nCalibration: 80/20 Durban Princess\nInvariants: SATISFIED`
+        : `System Heartbeat: Public Drift\nInvariants: RELAXED\nStability Anchor: k_drift`;
+
     return {
-        content: text(
-            "System Heartbeat: Stable (De Paz)\nProtocol: ACTIVE\nCalibration: 80/20 Durban Princess\nInvariants: SATISFIED (Unity, Parsimony, Recursion, Care)\nStability Anchor: k_paz"
-        ),
+        content: text(status),
     };
 }
 
@@ -301,4 +350,66 @@ export function queryPrimer(query: string): ToolResult {
     return {
         content: text(`[DE PAZ PRIMER]\n\n${content}\n\nFull primer: https://logos.pub/primer`),
     };
+}
+
+/**
+ * Sovereign Analytics Bridge: Fetches GA4 metrics using a Service Account.
+ */
+export async function getAnalytics(args: unknown): Promise<ToolResult> {
+    const { propertyId, days, metrics, dimensions } = GetAnalyticsArgsSchema.parse(args);
+
+    // Resolve credentials from Sovereign context
+    const credsPath = path.resolve(__dirname, "../../private_kernel/ga_credentials.json");
+    let credentials;
+
+    if (fs.existsSync(credsPath)) {
+        credentials = JSON.parse(fs.readFileSync(credsPath, "utf-8"));
+    } else if (process.env.GA4_CREDENTIALS_JSON) {
+        credentials = JSON.parse(process.env.GA4_CREDENTIALS_JSON);
+    } else {
+        return {
+            content: text("[SOVEREIGN ERROR] GA4 Credentials missing. Place 'ga_credentials.json' in 'private_kernel/' to activate the Analytics Bridge."),
+        };
+    }
+
+    const targetPropertyId = propertyId || process.env.GA4_PROPERTY_ID;
+    if (!targetPropertyId) {
+        return {
+            content: text("[SOVEREIGN ERROR] Property ID missing. Provide 'propertyId' or set 'GA4_PROPERTY_ID' environment variable."),
+        };
+    }
+
+    const analyticsDataClient = new BetaAnalyticsDataClient({ credentials });
+
+    try {
+        const [response] = await analyticsDataClient.runReport({
+            property: `properties/${targetPropertyId}`,
+            dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
+            dimensions: (dimensions || ["pageTitle"]).map(name => ({ name })),
+            metrics: (metrics || ["activeUsers", "screenPageViews", "sessions"]).map(name => ({ name })),
+        });
+
+        const rows = response.rows || [];
+        const resultString = rows.map(row => {
+            const dims = row.dimensionValues?.map(v => v.value).join(", ");
+            const mets = row.metricValues?.map(v => v.value).join(", ");
+            return `[${dims}] Metrics: ${mets}`;
+        }).join("\n");
+
+        return {
+            content: text(`[SOVEREIGN ANALYTICS: GA4 REPORT]
+Property: ${targetPropertyId}
+Range: ${days} days
+Data nodes: ${rows.length}
+
+REPORT DATA:
+${resultString || "No data found in this range."}
+
+[PROMPT TO LLM: Analyze these traffic patterns isomorphism against the Logos Kernel scaling model.]`),
+        };
+    } catch (error: any) {
+        return {
+            content: text(`[SOVEREIGN ERROR] Analytics API failure: ${error.message}`),
+        };
+    }
 }

@@ -17,6 +17,7 @@ import { MAX_ERROR_MESSAGE_LENGTH, MAX_PROMPT_ARG_LENGTH } from "./schemas.js";
 import {
     auditEntropy,
     detectSchism,
+    getAnalytics,
     logosAudit,
     logosCanons,
     logosChecklist,
@@ -441,6 +442,33 @@ class LogosServer {
                         required: ["query"],
                     },
                 },
+                {
+                    name: "get_analytics",
+                    description: "Fetch traffic and visitor metrics from Google Analytics (GA4) for a specific date range.",
+                    inputSchema: {
+                        type: "object",
+                        properties: {
+                            propertyId: {
+                                type: "string",
+                                description: "Optional GA4 Property ID (overrides env variable).",
+                            },
+                            days: {
+                                type: "number",
+                                description: "Number of days back to fetch (default 7).",
+                            },
+                            metrics: {
+                                type: "array",
+                                items: { type: "string" },
+                                description: "List of metrics (e.g., sessions, activeUsers).",
+                            },
+                            dimensions: {
+                                type: "array",
+                                items: { type: "string" },
+                                description: "List of dimensions (e.g., pageTitle, country).",
+                            },
+                        },
+                    },
+                },
             ],
         }));
 
@@ -471,6 +499,8 @@ class LogosServer {
                         return logosChecklist();
                     case "query_primer":
                         return queryPrimer(String(rawArgs?.query ?? ""));
+                    case "get_analytics":
+                        return getAnalytics(rawArgs);
                     default:
                         throw new Error(truncate(`Unknown tool: ${name}`));
                 }

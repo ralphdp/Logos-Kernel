@@ -5,5 +5,8 @@
   "scripts": {
     "build": "cd mcp && npm run build",
     "publish:mcp": "cd mcp && npm run build && npm publish"
+  },
+  "dependencies": {
+    "@google-analytics/admin": "^9.0.1"
   }
 }

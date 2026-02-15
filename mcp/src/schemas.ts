@@ -43,6 +43,13 @@ export const DetectSchismArgsSchema = z.object({
     root_hash: z.string().max(MAX_STRING_LENGTH).optional(),
 });
 
+export const GetAnalyticsArgsSchema = z.object({
+    propertyId: z.string().max(MAX_STRING_LENGTH).optional(),
+    days: z.number().min(1).max(365).optional().default(7),
+    metrics: z.array(z.string()).optional(),
+    dimensions: z.array(z.string()).optional(),
+});
+
 export type LogosAuditArgs = z.infer<typeof LogosAuditArgsSchema>;
 export type MapIsomorphismArgs = z.infer<typeof MapIsomorphismArgsSchema>;
 export type AuditEntropyArgs = z.infer<typeof AuditEntropyArgsSchema>;
