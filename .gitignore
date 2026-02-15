@@ -42,3 +42,4 @@ logos-kernel-test-delete-after/
 
 # mcp-v6: personal/IDE only, do not sync to remote
 mcp-v6/
+private_kernel/
