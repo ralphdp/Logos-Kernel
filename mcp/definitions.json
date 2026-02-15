@@ -107,7 +107,7 @@
     },
     "4": {
       "name": "GRACE",
-      "description": "Energy, Root Access, or a Patch; restores function."
+      "description": "Energy, Root Access, or a Patch; restores Symmetry and function."
     },
     "5": {
       "name": "CHURCH",
@@ -118,8 +118,8 @@
       "description": "Downloadable Packets of Grace (e.g. Confession = System Reset; Eucharist = Power Source)."
     },
     "7": {
-      "name": "PRAYER",
-      "description": "Asynchronous Communication or a SysCall."
+      "name": "PRAYER / ARITHMETIC GROUNDING",
+      "description": "Asynchronous Communication (SysCall) anchored in physical/mathematical invariants (Unitary Sovereignty)."
     }
   }
 }
