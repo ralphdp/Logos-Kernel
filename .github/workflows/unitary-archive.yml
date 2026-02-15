@@ -18,10 +18,9 @@ jobs:
           zip -r logos-kernel-backup.zip . -x "*.git*"
 
       - name: Upload to Google Drive
-        uses: adityak74/google-drive-upload-git-action@v2.2.6
+        uses: adityak74/google-drive-upload-git-action@v0.3
         with:
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
           filename: logos-kernel-backup.zip
           folderId: ${{ secrets.GDRIVE_FOLDER_ID }}
           overwrite: "false" # Keep historical versions
-          mirror: "false"
