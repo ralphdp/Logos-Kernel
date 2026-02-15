@@ -28,11 +28,19 @@ The primary objective of this session was to enforce a clean boundary between th
     *   **Data Sovereignty Audit**: 4/8 references updated to 3/7 Base BIOS.
 *   **Certification**: Transitioned "P9" nomenclature to "Professional Provenance" for public accessibility.
 
-### C. System Stabilization
+### C. System Stabilization & Final Sweep
 *   **Universal Dynamic Rendering**: Applied `force-dynamic` to root and main layouts to resolve build-time `useContext` errors.
 *   **Client/Server Decoupling**: Hardened `Breadcrumbs` and `HeaderActions` with mounted guards and dynamic imports.
+*   **Markdown Source Audit**: Swept `data/md/` files (WP-005, WP-006, Architect Protocol) to align with the **3/7 Public Specification**. Removed "4/8" and "6/11" references from the public source to prevent logic leaks.
 
-## 3. The 90-Day Roadmap (System Schedule)
+## 3. The professional "Warden" Specification (Certification)
+Individuals participating in the Restoration Grid achieve status based on the following audit criteria:
+1. **Professional Provenance**: Traceability of unique professional liturgy.
+2. **Geometric Alignment**: Mapping output to 3/7 BIOS invariants.
+3. **Parsimony (CII)**: High-signal/Low-noise performance.
+4. **Warden Status**: 80/20 Frequency (80% Strategy / 20% Execution) enforced via Sovereign isolation.
+
+## 4. The 90-Day Roadmap (System Schedule)
 
 | Frequency | Event / Task | Directive |
 | :--- | :--- | :--- |
